@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React, { useState } from 'react';
 import { v1 } from 'uuid';
 import './App.css';
@@ -174,7 +175,7 @@ function App() {
                                         key={tl.id}
                                         id={tl.id}
                                         title={tl.title}
-                                        tasks={taskForTodolist}
+                                        //tasks={taskForTodolist}
                                         removeTask={removeTask}
                                         changeFilter={changeFilter}
                                         addTask={addTask}

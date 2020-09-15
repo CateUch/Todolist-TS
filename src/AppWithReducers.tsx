@@ -9,6 +9,7 @@ import { Menu } from '@material-ui/icons';
 import { todolistsReducer, changeTodoListFilterAC, changeTodoListTitleAC, removeTodoListAC, addTodoListAC } from './state/todolist-reducer';
 import { tasksReducer, addTaskAC, removeTaskAC, changeTaskStatusAC, changeTaskTitleAC } from './state/task-reducer';
 
+
 export type TodoListType = {
     id: string
     title: string
@@ -57,8 +58,7 @@ function AppWithReducers() {
     function removeTodoList(todoListID: string) {
         let action = removeTodoListAC(todoListID);
         dispatchTodolists(action);
-        dispatchTasks(action)
-        // let filteredsetTodoLists = todoLists.filter(tl => tl.id !== todoListID);
+        dispatchTasks(action);
     };
 
     function addTodoList(title: string) {
@@ -110,31 +110,29 @@ function AppWithReducers() {
                 <Grid container spacing={3}>
                     {
                         todoLists.map(tl => {
-                            let taskForTodolist = tasksObj[tl.id];
-                            if (tl.filter === 'active') {
-                                taskForTodolist = taskForTodolist.filter(task => task.isDone === false)
-                            };
-                            if (tl.filter === 'completed') {
-                                taskForTodolist = taskForTodolist.filter(task => task.isDone === true)
-                            }
+                            // let taskForTodolist = tasks[tl.id];
+                            // if (tl.filter === 'active') {
+                            //     taskForTodolist = taskForTodolist.filter(task => task.isDone === false)
+                            // };
+                            // if (tl.filter === 'completed') {
+                            //     taskForTodolist = taskForTodolist.filter(task => task.isDone === true)
+                            // }
                             debugger;
                             return <Grid item>
                                 <Paper style={{ padding: "10px" }} elevation={3}>
-                                    <Todolist
+                                    {/* <Todolist
                                         key={tl.id}
-                                        id={tl.id}
-                                        title={tl.title}
-                                        tasks={taskForTodolist}
-                                        removeTask={removeTask}
+                                        //id={tl.id}
+                                        //title={tl.title}
+                                        //removeTask={removeTask}
+                                        //addTask={addTask}
+                                        //changeTaskTitle={changeTaskTitle}
                                         changeFilter={changeFilter}
-                                        addTask={addTask}
-                                        changeTaskStatus={changeTaskStatus}
-                                        filter={tl.filter}
+                                        //filter={tl.filter}
                                         collapsed={collapsed}
                                         removeTodoList={removeTodoList}
-                                        changeTaskTitle={changeTaskTitle}
                                         changeTodoListTitle={changeTodoListTitle}
-                                    />
+                                    /> */}
                                 </Paper>
                             </Grid>
                         })

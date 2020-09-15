@@ -28,9 +28,9 @@ export type changeTaskTitleACType = {
     todoListID: string
     taskID: string
 }
+let initialState: TasksStateType = {}
 
-
-export const tasksReducer = (state: TasksStateType, action: ActionType) => {
+export const tasksReducer = (state = initialState, action: ActionType) => {
     switch (action.type) {
         case "REMOVE-TASK": {
             const stateCopy = { ...state };
@@ -54,7 +54,6 @@ export const tasksReducer = (state: TasksStateType, action: ActionType) => {
                 [action.todoListID]: changeTitleAndStatus(state[action.todoListID], action.taskID, action.title)
             }
         case "ADD-TODOLIST":
-            console.log('you are here')
             return {
                 ...state,
                 [action.todoListID]: []
@@ -65,7 +64,7 @@ export const tasksReducer = (state: TasksStateType, action: ActionType) => {
             delete newState[action.todoListID]
             return newState;
         default:
-            throw new Error("I do not understand this type")
+            return state;
     };
 }
 

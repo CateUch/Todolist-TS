@@ -1,18 +1,18 @@
 import React, { ChangeEvent, KeyboardEvent, useState } from 'react';
-import { Button, TextField, IconButton  } from '@material-ui/core';
+import { TextField, IconButton  } from '@material-ui/core';
 import { AddBox } from '@material-ui/icons';
 
 export type AddItemFormPropsType = {
     addItem: (title: string) => void
 }
 
-export function AddItemForm(props: AddItemFormPropsType) {
-
+export const AddItemForm  = React.memo((props: AddItemFormPropsType) => {
+console.log('AddItemForm')
     let [title, setTitle] = useState<string>('');
     let [error, setError] = useState<string | null>(null);
 
     const onTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setError(null);
+        if (error !== null) setError(null)
         setTitle(e.currentTarget.value);
     };
     const onEnterKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -38,16 +38,8 @@ export function AddItemForm(props: AddItemFormPropsType) {
             label={"Title"}
             helperText={error}
         />
-        {/* <input
-            value={title}
-            onChange={onTitleChange}
-            onKeyPress={onEnterKeyPress}
-            className={error ? 'error' : ''} /> */}
-            <IconButton color={"primary"} onClick={addItemClick} >
+             <IconButton color={"primary"} onClick={addItemClick} >
                 <AddBox />
-            </IconButton>
-
-        {/* <Button variant={'contained'} color={'primary'} onClick={onAddTaskClick}>+</Button> */}
-        {/* <button onClick={onAddTaskClick}>add new task</button>*/}                                        
+            </IconButton>                                  
     </div>;
-}
+})
