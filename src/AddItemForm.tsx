@@ -1,4 +1,5 @@
 import React, { ChangeEvent, KeyboardEvent, useState } from 'react';
+
 import { TextField, IconButton  } from '@material-ui/core';
 import { AddBox } from '@material-ui/icons';
 
@@ -16,7 +17,7 @@ console.log('AddItemForm')
         setTitle(e.currentTarget.value);
     };
     const onEnterKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
-        if (e.charCode === 13) { addItemClick(); }
+        if (e.charCode === 13) { addItemClick(); } 
     };
 
     const addItemClick = () => {

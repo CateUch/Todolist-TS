@@ -50,8 +50,7 @@ export const Todolist = React.memo((props: PropsType) => {
     const onActiveFilterOnclick = useCallback(() => props.changeFilter(props.id, 'active'), [props.changeFilter, props.id]);
     const onCompletFilterOnclick = useCallback(() => props.changeFilter(props.id, 'completed'), [props.changeFilter, props.id]);
     const removeTodoList = useCallback(() => props.removeTodoList(props.id), [props.changeFilter, props.id]);
-    const changeTodoListTitle = useCallback((newTitle: string) => {
-        props.changeTodoListTitle(newTitle, props.id)
+    const changeTodoListTitle = useCallback((newTitle: string) => { props.changeTodoListTitle(newTitle, props.id)
     }, [props.changeTodoListTitle, props.id]);
 
     return <div>
@@ -71,6 +70,7 @@ export const Todolist = React.memo((props: PropsType) => {
                     onClickRemove={onClickRemove}
                     onChangeStatusHandler={onChangeStatusHandler}
                     onChangeTitleHandler={onChangeTitleHandler}
+                    todoListID={props.todolist.id}
                 />
             )}
         </div>

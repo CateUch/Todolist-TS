@@ -9,6 +9,8 @@ export type TaskPropsType = {
     onChangeStatusHandler: (taskID: string, event: boolean) => void
     onChangeTitleHandler: (taskID: string, title: string) => void
     onClickRemove: (id: string) => void
+    todoListID: string
+    
 };
 
 export const Task = React.memo((props: TaskPropsType) => {
