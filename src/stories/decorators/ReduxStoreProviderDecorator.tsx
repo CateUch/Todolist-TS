@@ -1,10 +1,11 @@
+//@ts-nocheck
 import React from 'react';
 import { Provider } from 'react-redux';
 import { AppRootStateType, store } from '../../state/store';
 import { combineReducers, createStore } from 'redux'
 import { v1 } from 'uuid'
 import { tasksReducer } from '../../state/task-reducer';
-import { todolistsReducer } from '../../state/todolist-reducer';
+import { TodolistDomainType, todolistsReducer } from '../../state/todolist-reducer';
 
 
 const rootReducer = combineReducers({
@@ -29,7 +30,7 @@ const initialGlobalState = {
     }
 };
 
-export const storyBookStore = createStore(rootReducer, initialGlobalState as AppRootStateType);
+export const storyBookStore = createStore(rootReducer, initialGlobalState as Array<TodolistDomainType>);
 
 export const ReduxStoreProviderDecorator = (storyFn: any) => {
     return <Provider store={storyBookStore}>

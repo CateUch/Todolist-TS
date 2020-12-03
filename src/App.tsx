@@ -45,18 +45,18 @@ function App() {
         ]
     });
 
-    function changeFilter(todoListID: string, value: FilterValueType,) {
-        let todoList = todoLists.find(tl => tl.id === todoListID);
+    function changeFilter(todoListId: string, value: FilterValueType,) {
+        let todoList = todoLists.find(tl => tl.id === todoListId);
         if (todoList) {
             todoList.filter = value;
             setTodoLists([...todoLists]);
         }
     };
 
-    function changeTodoListTitle(newTitle: string, todoListID: string) {
-        //достанем нужный массив по todolistId:
+    function changeTodoListTitle(newTitle: string, todoListId: string) {
+        //достанем нужный массив по todoListId:
         // найдём нужную таску:
-        let todoList = todoLists.find(tl => tl.id === todoListID);
+        let todoList = todoLists.find(tl => tl.id === todoListId);
         //изменим таску, если она нашлась
         if (todoList) {
             todoList.title = newTitle;
@@ -65,14 +65,14 @@ function App() {
         }
     };
 
-    function removeTodoList(todoListID: string) {
-        //достанем нужный массив по todolistId:
+    function removeTodoList(todoListId: string) {
+        //достанем нужный массив по todoListId:
          // перезапишем в этом объекте массив для нужного тудулиста отфилтрованным массивом:
-        let filteredsetTodoLists = todoLists.filter(tl => tl.id !== todoListID);
+        let filteredsetTodoLists = todoLists.filter(tl => tl.id !== todoListId);
         // засетаем в стейт копию объекта, чтобы React отреагировал перерисовкой
         setTodoLists(filteredsetTodoLists);
         //удалим таски из стейта
-        delete tasksObj[todoListID];
+        delete tasksObj[todoListId];
        // засетаем в стейт копию объекта, чтобы React отреагировал перерисовкой
         setTasks({ ...tasksObj });
     };
@@ -91,30 +91,30 @@ function App() {
     };
 
 
-    function addTask(title: string, todoListID: string) {
+    function addTask(title: string, todoListId: string) {
         let task = { id: v1(), title: title, isDone: false };
-        //достанем нужный массив по todolistId:
-        let tasks = tasksObj[todoListID];
+        //достанем нужный массив по todoListId:
+        let tasks = tasksObj[todoListId];
         // перезапишем в этом объекте массив для нужного тудулиста копией, добавив в начало новую таску:
         let newTasks = [task, ...tasks];
-        tasksObj[todoListID] = newTasks;
+        tasksObj[todoListId] = newTasks;
         // засетаем в стейт копию объекта, чтобы React отреагировал перерисовкой
         setTasks({ ...tasksObj })
     };
 
-    function removeTask(id: string, todoListID: string) {
-        //достанем нужный массив по todolistId:
-        let tasks = tasksObj[todoListID];
+    function removeTask(id: string, todoListId: string) {
+        //достанем нужный массив по todoListId:
+        let tasks = tasksObj[todoListId];
         // перезапишем в этом объекте массив для нужного тудулиста отфилтрованным массивом:
         let filteredTasks = tasks.filter(task => task.id !== id);
-        tasksObj[todoListID] = filteredTasks;
+        tasksObj[todoListId] = filteredTasks;
         // засетаем в стейт копию объекта, чтобы React отреагировал перерисовкой
         setTasks({ ...tasksObj });
     };
 
-    function changeTaskStatus(id: string, isDone: boolean, todoListID: string) {
-        //достанем нужный массив по todolistId:
-        let tasks = tasksObj[todoListID];
+    function changeTaskStatus(id: string, isDone: boolean, todoListId: string) {
+        //достанем нужный массив по todoListId:
+        let tasks = tasksObj[todoListId];
         // найдём нужную таску:
         let task = tasks.find(task => task.id === id)
         //изменим таску, если она нашлась
@@ -124,9 +124,9 @@ function App() {
             setTasks({ ...tasksObj })
         }
     };
-    function changeTaskTitle(id: string, newTitle: string, todoListID: string) {
-        //достанем нужный массив по todolistId:
-        let tasks = tasksObj[todoListID];
+    function changeTaskTitle(id: string, newTitle: string, todoListId: string) {
+        //достанем нужный массив по todoListId:
+        let tasks = tasksObj[todoListId];
         // найдём нужную таску:
         let task = tasks.find(task => task.id === id)
         //изменим таску, если она нашлась
